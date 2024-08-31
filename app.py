@@ -8,9 +8,6 @@ import pickle
 def desc_calc():
     bashCommand = "java -Xms2G -Xmx2G -Djava.awt.headless=true -jar ./PaDEL-Descriptor/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes ./PaDEL-Descriptor/PubchemFingerprinter.xml -dir ./ -file descriptors_output.csv"
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE) # Removed extra indent here
-output: object
-output, error = process.communicate()
-    os.remove('molecule.smi')
 def filedownload(df):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
